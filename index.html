@@ -13,6 +13,12 @@
     <title>Document</title>
   </head>
   <body>
+    <div class="text-center pt-5 listNames">
+      <button class="btn btn-secondary" id="btnDisplayNames">
+        Display Names
+      </button>
+    </div>
+
     <div class="input-group mb-3">
       <div class="input-group-prepend">
         <label class="input-group-text" for="inputSearchSelector"
@@ -40,10 +46,25 @@
             <th scope="col">Email</th>
           </tr>
         </thead>
-        <tbody id="nameEmailList">
+        <tbody id="nameEmailList"></tbody>
+      </table>
+    </div>
 
-        </tbody>
-        </table>
+    <div class="container">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Street</th>
+            <th scope="col">Suite</th>
+            <th scope="col">City</th>
+            <th scope="col">Zipcode</th>
+            <th scope="col">Lat</th>
+            <th scope="col">Lng</th>
+          </tr>
+        </thead>
+        <tbody id="addressList"></tbody>
+      </table>
     </div>
 
     <script src="index.js"></script>

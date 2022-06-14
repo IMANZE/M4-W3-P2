@@ -3,6 +3,13 @@ window.onload = async () => {
     let dataUsers = await fetchUsers();
     //  console.log(dataUsers);
     addUserList(dataUsers);
+    displayUsersAddresses(dataUsers);
+
+    const btnDisplayNames = document.querySelector("#btnDisplayNames");
+
+    btnDisplayNames.addEventListener("click", () => {
+      listOfNames(dataUsers);
+    });
   } catch (error) {
     console.log(error);
   }
@@ -58,4 +65,50 @@ const addUserList = (usersArray) => {
     .join(" ");
 };
 
+const displayUsersAddresses = (usersAddresses) => {
+  const addressList = document.querySelector("#addressList");
 
+  addressList.innerHTML = usersAddresses
+    .map((user) => {
+      return `
+      <tbody>
+       <tr>
+         <th scope="row">${user.id}</th>
+         <th scope="row">${user.address.street}</th>
+         <td scope="row">${user.address.suite}</td>
+         <td scope="row">${user.address.city}</td>
+         <td scope="row">${user.address.zipcode}</td>
+         <td scope="row">${user.address.geo.lat}</td>
+         <td scope="row">${user.address.geo.lng}</td>
+       </tr>
+     </tbody>
+      `;
+    })
+    .join(" ");
+};
+
+const listOfNames = (listNames) => {
+  const names = document.querySelector(".listNames");
+  names.innerHTML = `
+     <table class="table">
+     <thead>
+       <tr>
+         <th scope="col">Name</th>
+       </tr>
+     </thead>
+     <tbody id="tableNames">
+       
+     </tbody>
+   </table>
+   `;
+  const tableNames = document.querySelector("#tableNames");
+  tableNames.innerHTML = listNames
+    .map((user) => {
+      return `
+       <tr>
+       <td scope="row">${user.name}</td>
+       </tr>
+       `;
+    })
+    .join(" ");
+};
